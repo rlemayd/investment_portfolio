@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<form id="portfolio-select-form">
+  <div class="form-group">
+    <label for="portfolio-select">Select Portfolio</label>
+    <!--TODO: Make this select with no option on the start-->
+    <select class="form-control" id="portfolio-select" name="portfolio_name">
+      {% for portfolio in portfolios %}
+      <option>{{ portfolio.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</form>
+
+<div id="date-range-picker" style="display: none">
+  <h3>Select Date Range</h3>
+  <input type="text" id="daterange" name="daterange" class="form-control" />
+  <br />
+  <button type="button" id="submit-button" class="btn btn-primary">
+    Submit
+  </button>
+</div>
+
+<script>
+  $('#portfolio-select').on('change', function () {
+    $.ajax({
+      url: "{% url 'get_portfolio_date_ranges' %}",
+      data: { portfolio_name: $(this).val() },
+      dataType: 'json',
+      success: function (data) {
+        $('#date-range-picker').show();
+        $('input[name="daterange"]').daterangepicker({
+          minDate: data.start_date,
+          maxDate: data.end_date,
+          startDate: data.start_date,
+          endDate: data.end_date,
+        });
+      },
+    });
+  });
+
+  $('#submit-button').on('click', function () {
+    var portfolio_name = $('#portfolio-select').val();
+    var date_range = $('input[name="daterange"]').val();
+
+    window.location.href =
+      "{% url 'retrieve_data' %}" +
+      '?portfolio_name=' +
+      portfolio_name +
+      '&date_range=' +
+      date_range;
+  });
+</script>
+{% endblock %}

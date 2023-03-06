@@ -33,7 +33,6 @@ class Portfolio(models.Model):
         weights_by_date = {}
         current_date = start_date
         while current_date <= end_date:
-            date_weight = {}
             try:
                 total_value = PortfolioDailyValue.objects.get(portfolio=self, date=current_date).value #obtain portfolio value
                 asset_portfolios = AssetPortfolio.objects.filter(portfolio=self) #all assets from portfolio
