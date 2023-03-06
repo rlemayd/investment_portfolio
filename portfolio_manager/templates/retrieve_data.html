@@ -2,8 +2,8 @@
 <form id="portfolio-select-form">
   <div class="form-group">
     <label for="portfolio-select">Select Portfolio</label>
-    <!--TODO: Make this select with no option on the start-->
     <select class="form-control" id="portfolio-select" name="portfolio_name">
+      <option disabled selected value> -- select a portfolio -- </option>
       {% for portfolio in portfolios %}
       <option>{{ portfolio.name }}</option>
       {% endfor %}
