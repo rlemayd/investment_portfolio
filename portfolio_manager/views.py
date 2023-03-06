@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from django.db.models import Min, Max
 import requests
 from django.urls import reverse
+from django.shortcuts import redirect
 
 from portfolio_manager.models import Asset
 from portfolio_manager.utils.serializer import AssetSerializer
@@ -103,3 +104,6 @@ def get_portfolio_date_ranges(request):
     data = {'start_date': start_date, 'end_date': end_date}
 
     return JsonResponse(data)
+
+def failed_404_view(request, exception):
+    return redirect('main')

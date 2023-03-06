@@ -3,8 +3,8 @@ from . import views
 from django.conf import settings
 
 urlpatterns = [
-    path('', views.getPortfolioRequest, name="main"),
-    path('dashboard/', views.retrieveData, name="retrieve_data"),
+    #path('', views.getPortfolioRequest, name="main"),
+    #path('dashboard/', views.retrieveData, name="retrieve_data"),
     path('porfolio_dates/', views.get_portfolio_date_ranges, name="get_portfolio_date_ranges"),
 
     path('assets/', views.getAssets),
