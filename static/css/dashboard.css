@@ -1,3 +1,4 @@
+/* ----------------------------  Switch CSS  ---------------------------- */
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -59,4 +60,27 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+/* ----------------------------  End Switch CSS  ---------------------------- */
+
+/* -------------------------  Slider position CSS  -------------------------- */
+
+.switch-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.switch-container span,
+.switch-container label {
+  display: flex;
+  align-items: center;
+  margin: 1%;
+}
+
+/* -------------------------  End Slider position CSS  ------------------------- */
+
+.canvas-container{
+  height: 400px;
 }
