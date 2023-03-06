@@ -1,0 +1,18 @@
+.title{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.form-group{
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#date-range-picker{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

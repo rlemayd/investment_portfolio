@@ -41,7 +41,6 @@ def getPortfolioValues(request):
         Vt = PortfolioDailyValue.objects.filter(date__range=[start_date, end_date])
 
     serializer = PortfolioDailyValueSerializer(Vt, many=True)
-    print("HOLAAAA", serializer.data)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -89,8 +88,6 @@ def retrieveData(request):
     context = {"portfolio_name": portfolio_name,
                "portfolio_values": json.dumps(values, default=str),
                "asset_weights": json.dumps(requests.get(request.build_absolute_uri(reverse('assets_weight') + query_params)).json())}
-    print("OH NO",values)
-    print("JUJU",context["portfolio_values"])
     return render (request,'dashboard.html', context)
 
 @api_view(['GET'])
