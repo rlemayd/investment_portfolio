@@ -1,5 +1,7 @@
 # Investment Portfolio App
- 
+
+### Instructions for running the project
+
 For this app, you need an .xlsx file, which needs to have two sheets:
 1. The name needs to be "weights" and with this format:
 
@@ -39,3 +41,37 @@ python manage.py runserver
 ```
 
 Once the project is running, you can enter the URL provided in the shell, and watch the behavior of a specific portfolio for a given date-range.
+
+### Instructions for using the API
+
+The API for this project is pretty simple, you can retrieve the Assets, check the portfolio values through a date range and the asset weights on a specific portfolio through a date range, the following commands will help you achieve this:
+
+For getting all the Assets
+```api
+http://127.0.0.1:8000/api/assets
+```
+
+For getting a specific Asset
+```api
+http://127.0.0.1:8000/api/assets/<name_of_the_asset>
+```
+
+For getting the asset weights of all the portfolios during a date range
+```api
+http://127.0.0.1:8000/api/asset_weights/?fecha_inicio=<start_date>&fecha_fin=<end_date>
+```
+
+For getting the asset weights of a specific portfolio during a date range
+```api
+http://127.0.0.1:8000/api/asset_weights/?portfolio_name=<portfolio_name>&fecha_inicio=<start_date>&fecha_fin=<end_date>
+```
+
+For getting all the portfolio values during a date range
+```api
+http://127.0.0.1:8000/api/portfolio_values/?fecha_inicio=<start_date>&fecha_fin=<end_date>
+```
+
+For getting the values of a specific portfolio during a date range
+```api
+http://127.0.0.1:8000/api/portfolio_values/?portfolio_name=<portfolio_name>&fecha_inicio=<start_date>&fecha_fin=<end_date>
+```
