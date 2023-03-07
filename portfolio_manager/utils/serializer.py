@@ -4,7 +4,7 @@ from portfolio_manager.models import Asset, AssetPortfolio, Portfolio, AssetPric
 class AssetSerializer(serializers.ModelSerializer):
     class Meta:
         model=Asset
-        fields=('name', 'latest_price')
+        fields="__all__"
 
 class PortfolioDailyValueSerializer(serializers.ModelSerializer):
     class Meta:
