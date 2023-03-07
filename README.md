@@ -19,6 +19,11 @@ For this app, you need an .xlsx file, which needs to have two sheets:
 
 After having this Excel file, you need to leave it at the same directory as the project with the name of datos.xlsx.
 
+For installing all the required libraries, you can enter to a shell and go to the project directory and run this command, which will install every package needed for this project:
+```shell
+pip install -r requirements.txt
+```
+
 For populating the database of the project with the Excel file data, you need to run this command:
 ```shell
 python manage.py populate
