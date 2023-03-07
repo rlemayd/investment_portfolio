@@ -1,4 +1,3 @@
-//TODO: Create readme explaining everything
 function changeDisplayGraphs() {
     var weightsChart = $('#weightsChartContainer')[0];
     var portfolioChart = $('#canvas')[0];
@@ -41,19 +40,15 @@ function changeDisplayGraphs() {
     }
   };
   var newChart = new Chart(ctx, config);
-  /* End Function */
+
+  /* End Function to create graph of portfolio values */
 
   //TODO: If the graph receives less than 7 days, it repeats the x-axis labels
   /* Function to create graph of asset weights */
   const assetWeights = getAssetWeights();
   const dates = Object.keys(assetWeights);
   const assets = assetWeights[dates[0]].map((a) => a.asset);
-  var test = assets.map((asset) => (
-    dates.map((date) => ({
-      x: new Date(date),
-      y: assetWeights[date].find((element) => element.asset === asset).weight,
-    }))
-  ))
+
   const dataPoints = assets.map((asset) => ({
     type: 'stackedArea',
     name: asset,
