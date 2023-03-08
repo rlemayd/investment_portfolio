@@ -61,17 +61,7 @@ For getting the asset weights of all the portfolios during a date range
 http://127.0.0.1:8000/api/asset_weights/?fecha_inicio=<start_date>&fecha_fin=<end_date>
 ```
 
-For getting the asset weights of a specific portfolio during a date range
-```api
-http://127.0.0.1:8000/api/asset_weights/?portfolio_name=<portfolio_name>&fecha_inicio=<start_date>&fecha_fin=<end_date>
-```
-
 For getting all the portfolio values during a date range
 ```api
 http://127.0.0.1:8000/api/portfolio_values/?fecha_inicio=<start_date>&fecha_fin=<end_date>
-```
-
-For getting the values of a specific portfolio during a date range
-```api
-http://127.0.0.1:8000/api/portfolio_values/?portfolio_name=<portfolio_name>&fecha_inicio=<start_date>&fecha_fin=<end_date>
 ```
