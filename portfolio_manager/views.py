@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from portfolio_manager.models import PortfolioDailyValue, AssetPortfolio, Portfolio
+from portfolio_manager.models import *
 from portfolio_manager.utils.serializer import PortfolioDailyValueSerializer
 from datetime import datetime, timedelta
 from django.db.models import Min, Max
@@ -52,6 +52,12 @@ def getAssetsWeight(request):
         start_date = datetime.strptime(request.GET.get('fecha_inicio'), "%y-%m-%d").date()
         end_date = datetime.strptime(request.GET.get('fecha_fin'), "%y-%m-%d").date()
         portfolio_given = Portfolio.objects.get(name=portfolio_name)
+        """
+        assets_weight = {
+                    'portfolio_name': portfolio_given.name,
+                    'assets': AssetPrice.objects.filter(asset__in=portfolio_given.assets.all(), date__range=[start_date, end_date]).values('asset__name','date','price'),
+                }
+        """
         assets_weight = {
                     'portfolio_name': portfolio_given.name,
                     'assets': portfolio_given.get_weights_by_date_range(start_date, end_date),
@@ -61,6 +67,12 @@ def getAssetsWeight(request):
         end_date = datetime.strptime(request.GET.get('fecha_fin'), "%d-%m-%y").date()
         assets_weight = []
         for portfolio in Portfolio.objects.all():
+            """
+            assets_weight.append({
+                    'portfolio_name': portfolio.name,
+                    'assets': AssetPrice.objects.filter(date__range=[start_date, end_date]).values('asset__name','date','price'),
+                })
+            """
             assets_weight.append({
                     'portfolio_name': portfolio.name,
                     'assets': portfolio.get_weights_by_date_range(start_date, end_date),
